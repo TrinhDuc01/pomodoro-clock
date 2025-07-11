@@ -5,7 +5,7 @@ const NavBar = () => {
             <h1 className="bg-red-400 text-2xl font-[500]">Pomodoro Clock</h1>
         </div>
         <div className="btn-group">
-            <button className="bg-[#ffffff33] opacity-90 px-3 py-2 rounded-md">Setting</button>
+            <button className="bg-[#ffffff33] opacity-90 px-3 py-2 rounded-md"><i class="fa-solid fa-gear inline-block mr-1"></i>Setting</button>
         </div>
     </div>
 }
