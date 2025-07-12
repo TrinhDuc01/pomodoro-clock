@@ -6,8 +6,10 @@ const Container = () => {
     return <div className="mx-auto max-w-160 px-4">
         <NavBar />
         <BarTiming />
-        <Clock />
-        <Message />
+        <div className="mx-auto max-w-[80%] space-y-5">
+            <Clock />
+            <Message />
+        </div>
     </div>
 }
 export default Container
