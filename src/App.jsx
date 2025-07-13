@@ -1,10 +1,13 @@
+import { useSelector } from 'react-redux'
 import './App.css'
 import Container from './components/Container'
 
 function App() {
+  const color = useSelector(state => state.timeReducer.color)
+  console.log(color)
   return (
-    <div className='bg-red-400 h-[100vh] text-white'>
-      <Container/>
+    <div style={{ backgroundColor: color }} className={`h-[100vh] transition-colors duration-800 text-white`}>
+      <Container />
     </div>
   )
 }
