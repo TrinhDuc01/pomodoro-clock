@@ -8,7 +8,7 @@ const Clock = () => {
     const time = useSelector(state => state.timeReducer)
     const [counter, setCounter] = useState(0)
     const [start, setStart] = useState(false)
-    const timeOutIDRef = useRef(null)
+    const intervalIDRef = useRef(null)
     useEffect(() => {
         setCounter(time.minutes * 60)
         // console.log('set')
@@ -16,7 +16,7 @@ const Clock = () => {
 
     const handleStart = () => {
         setStart(!start)
-        timeOutIDRef.current = setInterval(() => {
+        intervalIDRef.current = setInterval(() => {
             setCounter(prev => prev - 1)
         }, 1000)
     }
