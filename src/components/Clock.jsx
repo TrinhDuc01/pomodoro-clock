@@ -6,13 +6,22 @@ import FormatTimeString from "../utilities/FormatTimeString"
 const Clock = () => {
     const dispatch = useDispatch()
     const time = useSelector(state => state.timeReducer)
-    const [counter, setCounter] = useState(0)
+    const [counter, setCounter] = useState(1)
     const [start, setStart] = useState(false)
     const intervalIDRef = useRef(null)
+    const audioRef = useRef(null)
     useEffect(() => {
-        setCounter(time.minutes * 60)
+        setCounter(time.minutes * 1)
         // console.log('set')
     }, [time])
+
+    useEffect(() => {
+        if (counter <= 0) {
+            setStart(!start)
+            clearInterval(intervalIDRef.current)
+            audioRef.current.play()
+        }
+    }, [counter])
 
     const handleStart = () => {
         setStart(!start)
@@ -23,7 +32,7 @@ const Clock = () => {
 
     const handleStop = () => {
         setStart(!start)
-        clearInterval(timeOutIDRef.current)
+        clearInterval(intervalIDRef.current)
     }
 
     const handleClock = (clock) => {
@@ -44,8 +53,11 @@ const Clock = () => {
         {
             start ?
                 <button onClick={handleStop} style={{ color: time.color }} className={`bg-white hover:bg-gray-200 text-2xl px-12 py-3 mt-4 rounded font-[600]`}>STOP</button> :
-                <button onClick={handleStart} style={{ color: time.color }} className={`bg-white hover:bg-gray-200 text-2xl px-12 py-3 mt-4 rounded font-[600]`}>START</button>
+                <button disabled={counter <= 0 ? true : false} onClick={handleStart} style={{ color: time.color }} className={`bg-white hover:bg-gray-200 text-2xl px-12 py-3 mt-4 rounded font-[600]`}>START</button>
         }
+        <audio ref={audioRef}>
+            <source src="./public/sounds/alarm_clock.mp3"></source>
+        </audio>
     </div>
 }
 export default Clock
