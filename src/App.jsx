@@ -3,8 +3,8 @@ import './App.css'
 import Container from './components/Container'
 
 function App() {
-  const color = useSelector(state => state.timeReducer.color)
-  console.log(color)
+  const color = useSelector(state => state.timeReducer.currentTime.color)
+
   return (
     <div style={{ backgroundColor: color }} className={`h-[100vh] transition-colors duration-800 text-white`}>
       <Container />
