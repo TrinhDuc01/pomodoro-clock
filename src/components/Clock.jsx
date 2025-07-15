@@ -6,12 +6,16 @@ import FormatTimeString from "../utilities/FormatTimeString"
 const Clock = () => {
     const dispatch = useDispatch()
     const time = useSelector(state => state.timeReducer.currentTime)
-    const [counter, setCounter] = useState(1)
+    const counter = useSelector(state => state.counterReducer.timeRemaining)
     const [start, setStart] = useState(false)
     const intervalIDRef = useRef(null)
     const audioRef = useRef(null)
     useEffect(() => {
-        setCounter(time.minutes * 1)
+        // setCounter(time.minutes * 1)
+        dispatch({
+            type: "SET_TIME_REMAINING",
+            payload: time.minutes * 60
+        })
         console.log('rerender')
     }, [time])
 
@@ -34,7 +38,9 @@ const Clock = () => {
     const handleStart = () => {
         setStart(!start)
         intervalIDRef.current = setInterval(() => {
-            setCounter(prev => prev - 1)
+            dispatch({
+                type: "COUNT_TIME_REMAINING"
+            })
         }, 1000)
     }
 
