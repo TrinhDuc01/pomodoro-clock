@@ -5,20 +5,28 @@ import FormatTimeString from "../utilities/FormatTimeString"
 
 const Clock = () => {
     const dispatch = useDispatch()
-    const time = useSelector(state => state.timeReducer)
+    const time = useSelector(state => state.timeReducer.currentTime)
     const [counter, setCounter] = useState(1)
     const [start, setStart] = useState(false)
     const intervalIDRef = useRef(null)
     const audioRef = useRef(null)
     useEffect(() => {
         setCounter(time.minutes * 1)
-        // console.log('set')
+        console.log('rerender')
     }, [time])
+
+    console.log(time)
 
     useEffect(() => {
         if (counter <= 0) {
             setStart(!start)
             clearInterval(intervalIDRef.current)
+            dispatch({
+                type: "INCREASE_COUNT",
+                payload: {
+                    name: time.name
+                }
+            })
             audioRef.current.play()
         }
     }, [counter])
