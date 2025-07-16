@@ -16,7 +16,7 @@ const Clock = () => {
             type: "SET_TIME_REMAINING",
             payload: time.minutes * 60
         })
-        console.log('rerender')
+        // console.log('rerender')
     }, [time])
 
     console.log(time)
