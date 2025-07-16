@@ -38,11 +38,22 @@ const timeReducer = (state = defaultState, action) => {
             return { ...state, currentTime: state.modify[2] };
         case "INCREASE_COUNT":
             return {
-                modify: time.map(item => {
+                modify: state.modify.map(item => {
                     if (item.name === action.payload.name) return { ...item, count: item.count + 1 }
                     return item
                 }),
                 currentTime: { ...state.currentTime, count: state.currentTime.count + 1 }
+            }
+        case "SETTING_TIME":
+            let newCurrentTime = {}
+            action.payload.forEach(item => {
+                if (item.name === state.currentTime.name) {
+                    newCurrentTime = item;
+                }
+            });
+            return {
+                modify: action.payload,
+                currentTime: newCurrentTime
             }
         default:
             return state
