@@ -5,7 +5,7 @@ const NavBar = () => {
     const [isOpen, setIsOpen] = useState(false)
     return <div className="flex items-center justify-between py-2">
         <div className="logo flex items-center gap-1 py-2">
-            <i class="fa-regular fa-circle-check text-2xl"></i>
+            <i className="fa-regular fa-circle-check text-2xl"></i>
             <h1 className="text-2xl font-[500]">Pomodoro Clock</h1>
         </div>
         <div className="btn-group">

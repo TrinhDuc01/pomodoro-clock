@@ -7,6 +7,8 @@ const Clock = () => {
     const dispatch = useDispatch()
     const time = useSelector(state => state.timeReducer.currentTime)
     const counter = useSelector(state => state.counterReducer.timeRemaining)
+    const alarm = useSelector(state => state.alarmReducer.alarm);
+    // console.log(alarm)
     const [start, setStart] = useState(false)
     const intervalIDRef = useRef(null)
     const audioRef = useRef(null)
@@ -14,12 +16,18 @@ const Clock = () => {
         // setCounter(time.minutes * 1)
         dispatch({
             type: "SET_TIME_REMAINING",
-            payload: time.minutes * 60
+            payload: time.minutes * 1
         })
         // console.log('rerender')
     }, [time])
 
-    console.log(time)
+    useEffect(() => {
+        if (audioRef.current) {
+            audioRef.current.load(); // Load lại source mới
+        }
+    }, [alarm.url])
+
+    // console.log(alarm, audioRef.current)
 
     useEffect(() => {
         if (counter <= 0) {
@@ -70,7 +78,7 @@ const Clock = () => {
                 <button disabled={counter <= 0 ? true : false} onClick={handleStart} style={{ color: time.color }} className={`bg-white hover:bg-gray-200 text-2xl px-12 py-3 mt-4 rounded font-[600]`}>START</button>
         }
         <audio ref={audioRef}>
-            <source src="./public/sounds/alarm_clock.mp3"></source>
+            <source src={alarm.url}></source>
         </audio>
     </div>
 }
