@@ -16,7 +16,7 @@ const Clock = () => {
         // setCounter(time.minutes * 1)
         dispatch({
             type: "SET_TIME_REMAINING",
-            payload: time.minutes * 60
+            payload: time.minutes * 1
         })
         // console.log('rerender')
     }, [time])
@@ -78,7 +78,7 @@ const Clock = () => {
                 <button disabled={counter <= 0 ? true : false} onClick={handleStart} style={{ color: time.color }} className={`bg-white hover:bg-gray-200 text-2xl px-12 py-3 mt-4 rounded font-[600]`}>START</button>
         }
         <audio ref={audioRef}>
-            <source src={import.meta.env.BASE_URL+alarm.url}></source>
+            <source src={`${import.meta.env.BASE_URL}/${alarm.url}`}></source>
         </audio>
     </div>
 }
