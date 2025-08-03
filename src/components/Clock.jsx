@@ -78,7 +78,7 @@ const Clock = () => {
                 <button disabled={counter <= 0 ? true : false} onClick={handleStart} style={{ color: time.color }} className={`bg-white hover:bg-gray-200 text-2xl px-12 py-3 mt-4 rounded font-[600]`}>START</button>
         }
         <audio ref={audioRef}>
-            <source src={alarm.url}></source>
+            <source src={import.meta.env.BASE_URL+alarm.url}></source>
         </audio>
     </div>
 }

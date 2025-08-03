@@ -1,19 +1,19 @@
 const urlAlarm = [
     {
         name: 'Clock Alarm',
-        url: './public/sounds/alarm_clock.mp3'
+        url: 'sounds/alarm_clock.mp3'
     },
     {
         name: 'Danger Alarm',
-        url: './public/sounds/danger_alarm.mp3'
+        url: 'sounds/danger_alarm.mp3'
     },
     {
         name: 'SamSung Alarm',
-        url: './public/sounds/samsung_alarm.mp3'
+        url: 'sounds/samsung_alarm.mp3'
     },
     {
         name: 'Siuuu Alarm',
-        url: './public/sounds/suuuu_alarm.mp3'
+        url: 'sounds/suuuu_alarm.mp3'
     }
 ]
 
