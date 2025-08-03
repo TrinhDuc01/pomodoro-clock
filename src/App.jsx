@@ -6,7 +6,7 @@ function App() {
   const color = useSelector(state => state.timeReducer.currentTime.color)
 
   return (
-    <div style={{ backgroundColor: color }} className={`h-[100vh] transition-colors duration-800 text-white`}>
+    <div style={{ backgroundColor: color }} className={`h-[100vh] min-h-[600px] transition-colors duration-800 text-white`}>
       <Container />
     </div>
   )
