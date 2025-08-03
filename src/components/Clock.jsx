@@ -16,7 +16,7 @@ const Clock = () => {
         // setCounter(time.minutes * 1)
         dispatch({
             type: "SET_TIME_REMAINING",
-            payload: time.minutes * 1
+            payload: time.minutes * 60
         })
         // console.log('rerender')
     }, [time])
