@@ -64,7 +64,7 @@ const ModalSetting = ({ isOpen, setIsOpen }) => {
                     <h2 className="text-gray-500"><i class="fa-solid fa-volume-high mr-1.5"></i>Alarm sound</h2>
                     <select className="bg-gray-200 rounded px-2 py-1" name="alarm" onChange={(e) => setSettingAlarm(parseInt(e.target.value))} >
                         {settingAlarmList && settingAlarmList.map((item, index) => {
-                            return <option value={index}>{item.name}</option>
+                            return <option key={index} value={index}>{item.name}</option>
                         })}
                     </select>
 
